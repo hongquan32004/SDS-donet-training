@@ -1,0 +1,58 @@
+﻿@page "/create-student"
+@using StudentManagementBlazor.GrpcClient
+@using StudentManagementgRPC.Contracts.Requests
+@using StudentManagementgRPC.Contracts.Responses
+@using AntDesign
+@inject StudentGrpcClient GrpcCLient
+@rendermode InteractiveServer
+@inject IJSRuntime JS
+@inject NavigationManager Navigation
+
+<h3>CreateStudent</h3>
+
+<Form Model="createRequest"  OnFinish="HandleSubmit" OnFinishFailed="HandleFailed">
+	<FormItem Label="Name">
+		<Input @bind-Value="createRequest.Name" />
+	</FormItem>
+	<FormItem Label="Date of birth">
+		<DatePicker @bind-Value="createRequest.DateOfBirth" Format="dd/MM/yyyy" />
+	</FormItem>
+	<FormItem Label="Address">
+		<Input @bind-Value="createRequest.Address" />
+	</FormItem>
+	<FormItem Label="Classroom Id">
+		<Input @bind-Value="createRequest.Classroom.Id" />
+	</FormItem>
+	<FormItem>
+		<Button Type="ButtonType.Primary" HtmlType="submit">
+			Submit
+		</Button>
+	</FormItem>
+</Form>
+
+
+@code {
+	private StudentCreateRequest createRequest = new StudentCreateRequest
+	{
+		Classroom = new ClassRoom()
+	};
+
+	private async Task HandleSubmit()
+	{
+		try
+		{
+			await GrpcCLient.CreateStudent(createRequest);
+			await JS.InvokeVoidAsync("alert", "Tạo sinh viên thành công!!");
+			Navigation.NavigateTo("/students");
+		}
+		catch(Exception ex)
+		{
+			JS.InvokeVoidAsync("alert", $"Lỗi: {ex.Message}");
+		}
+
+	}
+	void HandleFailed(EditContext context)
+	{
+		Console.WriteLine("Form không hợp lệ!");
+	}
+}

@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>StudentManagementConsole</id>
+    <version>1.0.0</version>
+    <authors>StudentManagementConsole</authors>
+    <description>Package Description</description>
+    <repository type="git" commit="a77c4f4c9a5ef81bc6ab817004e256136357a66f" />
+    <dependencies>
+      <group targetFramework="net8.0">
+        <dependency id="FluentNHibernate" version="3.4.1" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Data.SqlClient" version="6.0.1" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.EntityFrameworkCore.SqlServer" version="9.0.3" exclude="Build,Analyzers" />
+        <dependency id="NHibernate" version="5.5.2" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="D:\TrainingC#\StudentManagementConsole\StudentManagementConsole\bin\Debug\net8.0\StudentManagementConsole.runtimeconfig.json" target="lib\net8.0\StudentManagementConsole.runtimeconfig.json" />
+    <file src="D:\TrainingC#\StudentManagementConsole\StudentManagementConsole\bin\Debug\net8.0\StudentManagementConsole.dll" target="lib\net8.0\StudentManagementConsole.dll" />
+  </files>
+</package>

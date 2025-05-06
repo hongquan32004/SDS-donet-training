@@ -1,0 +1,39 @@
+﻿@page "/student-detail/{id:int}"
+@using StudentManagementBlazor.GrpcClient
+@using StudentManagementgRPC.Contracts.Requests
+@using StudentManagementgRPC.Contracts.Responses
+@using AntDesign
+@inject StudentGrpcClient StudentGrpcClient
+@inject IJSRuntime JS
+@rendermode InteractiveServer
+@inject NavigationManager Navigation
+@if(student == null){
+	<p>Loading.......</p>
+}
+else
+{
+    <Descriptions Title="Student details" Bordered Column="1">
+        <DescriptionsItem Title="ID">@student.Id</DescriptionsItem>
+        <DescriptionsItem Title="Name">@student.Name</DescriptionsItem>
+        <DescriptionsItem Title="Address">@student.Address</DescriptionsItem>
+        <DescriptionsItem Title="Date of birth">
+            @student.DateOfBirth.ToString("dd/MM/yyyy")
+        </DescriptionsItem>
+        <DescriptionsItem Title="Class ID">@student.Classroom.Id</DescriptionsItem>
+		<DescriptionsItem Title="Class Name">@student.Classroom.Name</DescriptionsItem>
+		<DescriptionsItem Title="Subject">@student.Classroom.Subject</DescriptionsItem>
+		<DescriptionsItem Title="Teacher ID">@student.Classroom.Teacher.Id</DescriptionsItem>
+		<DescriptionsItem Title="Teacher Name">@student.Classroom.Teacher.Name</DescriptionsItem>
+    </Descriptions>
+}
+
+@code {
+	[Parameter]
+	public int id { get; set; }
+	private StudentManagementgRPC.Contracts.Responses.Student student;
+	protected override async Task OnInitializedAsync()
+	{
+		var request = new StudentRequest { Id = id };
+		student = await StudentGrpcClient.GetStudentById(request);
+	}
+}

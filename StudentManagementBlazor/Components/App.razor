@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <base href="/" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="favicon.png" />
+
+    <!-- External CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+
+    <!-- Application CSS -->
+    <link rel="stylesheet" href="bootstrap/bootstrap.min.css" />
+    <link rel="stylesheet" href="app.css" />
+    <link rel="stylesheet" href="StudentManagementBlazor.styles.css" />
+    <link href="_content/AntDesign/css/ant-design-blazor.css" rel="stylesheet" />
+
+    <!-- HeadOutlet for Blazor -->
+    <HeadOutlet />
+</head>
+
+<body>
+    <Routes />
+
+    <!-- External JS Libraries -->
+    <script src="_content/AntDesign.Charts/g2plot.min.js"></script>
+
+    <!-- AntDesign Blazor Scripts -->
+    <script src="_content/AntDesign/js/ant-design-blazor.js"></script>
+    <script src="_content/AntDesign.Charts/ant-design-charts-blazor.js"></script>
+    <script>
+        window.DownloadFile = (filename, contentType, base64Data) => {
+            const link = document.createElement('a');
+            link.download = filename;
+            link.href = `data:${contentType};base64,${base64Data}`;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        };
+    </script>
+    <!-- Blazor Framework -->
+    <script src="_framework/blazor.web.js"></script>
+</body>
+
+</html>

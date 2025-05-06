@@ -1,0 +1,21 @@
+.title[b-sbs4hlwdzp] {
+	color: #2c3e50;
+	font-weight: bold;
+	font-size: 24px;
+}
+table[b-sbs4hlwdzp] {
+	border-collapse: collapse;
+	width: 100%;
+}
+
+th[b-sbs4hlwdzp], td[b-sbs4hlwdzp] {
+	border: 1px solid #ccc;
+	padding: 10px;
+}
+
+th[b-sbs4hlwdzp] {
+	background-color: #f4f4f4;
+}
+.icon[b-sbs4hlwdzp]{
+	cursor: pointer;
+}

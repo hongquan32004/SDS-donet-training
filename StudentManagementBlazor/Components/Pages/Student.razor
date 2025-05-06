@@ -1,0 +1,274 @@
+﻿@page "/students"
+@using StudentManagementBlazor.GrpcClient
+@using StudentManagementgRPC.Contracts.Requests
+@using StudentManagementgRPC.Contracts.Responses
+@using student = StudentManagementgRPC.Contracts.Responses.Student
+@using AntDesign.Charts
+@using Title = AntDesign.Charts.Title
+@using AntDesign
+@inject StudentGrpcClient StudentGrpcClient
+@rendermode InteractiveServer
+@inject IJSRuntime JS
+@inject MessageService Message
+@inject NavigationManager Navigation
+
+@if (students == null)
+{
+    <Spin Tip="Đang tải dữ liệu......"/>
+}
+
+else
+{
+    <h3 class="title"><i class="fa-solid fa-chart-simple"></i> Biểu đồ thống kê</h3>
+    <Tabs>
+        <TabPane Key="1">
+            <TabTemplate>Biểu đồ thống kê sinh viên theo lớp</TabTemplate>
+            <ChildContent>
+                <Bar Data="classStats" Config="config1"/>
+            </ChildContent>
+        </TabPane>
+        <TabPane Key="2">
+            <TabTemplate>Biểu đồ thống kê sinh viên theo giáo viên</TabTemplate>
+            <ChildContent>
+                <Bar Data="teacherStats" Config="config2" />
+            </ChildContent>
+        </TabPane>
+    </Tabs>
+    <h3 class="title"><i class="fa-solid fa-list-ul"></i> Danh sách Sinh viên</h3>
+
+    <NavLink href="/create-student" >
+        <Button Type="ButtonType.Primary">Add</Button>
+    </NavLink>
+    <Button Type="ButtonType.Primary" OnClick="@handleSortByName">Sắp xếp theo tên</Button>
+    <Space>
+        <Input @bind-Value = "teacherName" Placeholder="Nhập tên giáo viên....."/>
+        <Button OnClick="@handleSortByTeacher">Tìm kiếm</Button>
+    </Space>
+    <Button OnClick="@handleExportExcel">Xuất excel</Button>
+    <Table TItem="student" DataSource="studentdata" RowKey="@(s => s.Id.ToString())" 
+        Bordered="true"
+        PageSize="7"
+    >
+        <AntDesign.Column TData="student" Title="Mã">
+            <Template>
+                @context.Id
+            </Template>
+        </AntDesign.Column>
+
+        <AntDesign.Column TData="student" Title="Tên">
+            <Template>
+                @context.Name
+            </Template>
+        </AntDesign.Column>
+
+        <AntDesign.Column TData="student" Title="Ngày sinh">
+            <Template>
+                @context.DateOfBirth.ToString("dd/MM/yyyy")
+            </Template>
+        </AntDesign.Column>
+
+        <AntDesign.Column TData="student" Title="Địa chỉ">
+            <Template>
+                @context.Address
+            </Template>
+        </AntDesign.Column>
+
+        <AntDesign.Column TData="student" Title="Mã lớp">
+            <Template>
+                @context.Classroom.Id
+            </Template>
+        </AntDesign.Column>
+
+        <AntDesign.Column TData="student" Title="Hành động">
+            <Template>
+                <Space>
+                    <Button OnClick="() => handleDelete(context.Id)"><i class="fa-solid fa-trash"></i></Button>
+                    <Button OnClick="async () => await navigateUpdate(context.Id)"><i class="fa-solid fa-pen-nib"></i></Button>
+                    <Button OnClick="async () => await navigateDetail(context.Id)"><i class="fa-solid fa-circle-info"></i></Button>
+                </Space>
+            </Template>
+        </AntDesign.Column>
+    </Table>
+    
+}
+
+@code {
+    private StudentList? students;
+    private List<student> studentdata = new();
+    private string teacherName = "";
+    private bool _isDisposed = false;
+
+    public class ClassStudentStat
+    {
+        public string className { get; set; } = "";
+        public int count { get; set; }
+    }
+
+    public class TeacherStudentStat
+    {
+        public string teacherName { get; set; } = "";
+        public int count { get; set; }
+    }
+
+    public List<ClassStudentStat> classStats = new();
+    public List<TeacherStudentStat> teacherStats = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadStudent();
+    }
+
+    async Task LoadStudent()
+    {
+        students = await StudentGrpcClient.GetAllStudents();
+        studentdata = students.Students;
+
+        classStats = studentdata
+            .GroupBy(s => s.Classroom.Name)
+            .Select(g => new ClassStudentStat
+                {
+                    className = g.Key,
+                    count = g.Count()
+                })
+            .ToList();
+
+        teacherStats = studentdata
+            .GroupBy(s => s.Classroom.Teacher.Name)
+            .Select(g => new TeacherStudentStat
+                {
+                    teacherName = g.Key,
+                    count = g.Count()
+                })
+            .ToList();
+    }
+
+    public void Dispose()
+    {
+        _isDisposed = true;
+    }
+
+    private BarConfig config1 = new BarConfig
+        {
+            Title = new Title
+            {
+                Visible = true,
+                Text = "Thống kê sinh viên theo lớp"
+            },
+            ForceFit = true,
+            XField = "count",
+            YField = "className",
+            Label = new BarViewConfigLabel
+            {
+                Visible = true
+            }
+        };
+
+    private BarConfig config2 = new BarConfig
+        {
+            Title = new Title
+            {
+                Visible = true,
+                Text = "Thống kê sinh viên theo giáo viên"
+            },
+            ForceFit = true,
+            XField = "count",
+            YField = "teacherName",
+            Label = new BarViewConfigLabel
+            {
+                Visible = true
+            }
+        };
+
+    async Task handleDelete(int studentid)
+    {
+        try
+        {
+            var request = new StudentRequest { Id = studentid };
+            await StudentGrpcClient.DeleteStudent(request);
+
+
+
+            if (!_isDisposed)
+            {
+                await Message.Success("Xóa thành công!");
+                await LoadStudent();
+                StateHasChanged();
+            }
+
+        }
+        catch (Exception ex)
+        {
+            await Message.Error($"Lỗi: {ex.Message}");
+        }
+    }
+
+    async Task handleSortByName()
+    {
+        try
+        {
+            students = await StudentGrpcClient.SortStudentByName();
+            studentdata = students.Students;
+            await Message.Success("Sắp xếp thành công!");
+
+            if (!_isDisposed)
+                StateHasChanged();
+        }
+        catch (Exception ex)
+        {
+            await Message.Error($"Lỗi: {ex.Message}");
+        }
+    }
+
+    async Task handleSortByTeacher()
+    {
+        try
+        {
+            if (!string.IsNullOrWhiteSpace(teacherName))
+            {
+                var request = new StudentManagementgRPCService.Contracts.Requests.StudentByTeacherRequest { TeacherName = teacherName };
+                students = await StudentGrpcClient.GetStudentByTeacher(request);
+                studentdata = students.Students;
+
+                await JS.InvokeVoidAsync("alert", "Tìm kiếm thành công!");               
+                StateHasChanged();
+            }
+            else
+            {
+                await JS.InvokeVoidAsync("alert", "Vui lòng nhập ID giáo viên!");
+            }
+        }
+        catch (Exception ex)
+        {
+            await Message.Error($"Lỗi: {ex.Message}");
+        }
+    }
+
+    async Task handleExportExcel()
+    {
+        try
+        {
+            var result = await StudentGrpcClient.ExportFileExcel();
+            var base64 = Convert.ToBase64String(result.fileBytes);
+
+            await JS.InvokeVoidAsync("DownloadFile", result.fileName, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", base64);
+        }
+        catch (Exception ex)
+        {
+            await Message.Error($"Lỗi: {ex.Message}");
+        }
+    }
+
+    async Task navigateUpdate(int id)
+    {
+        Navigation.NavigateTo($"/update-student/{id}");
+        await Task.CompletedTask;
+    }
+
+    async Task navigateDetail(int id)
+    {
+        Navigation.NavigateTo($"/student-detail/{id}");
+        await Task.CompletedTask;
+    }
+}
+
+

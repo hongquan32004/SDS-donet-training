@@ -1,0 +1,14 @@
+D:\StudentManagement\SudentManagementConSole\bin\Debug\net8.0\SudentManagementConSole.exe
+D:\StudentManagement\SudentManagementConSole\bin\Debug\net8.0\SudentManagementConSole.deps.json
+D:\StudentManagement\SudentManagementConSole\bin\Debug\net8.0\SudentManagementConSole.runtimeconfig.json
+D:\StudentManagement\SudentManagementConSole\bin\Debug\net8.0\SudentManagementConSole.dll
+D:\StudentManagement\SudentManagementConSole\bin\Debug\net8.0\SudentManagementConSole.pdb
+D:\StudentManagement\SudentManagementConSole\obj\Debug\net8.0\SudentManagementConSole.GeneratedMSBuildEditorConfig.editorconfig
+D:\StudentManagement\SudentManagementConSole\obj\Debug\net8.0\SudentManagementConSole.AssemblyInfoInputs.cache
+D:\StudentManagement\SudentManagementConSole\obj\Debug\net8.0\SudentManagementConSole.AssemblyInfo.cs
+D:\StudentManagement\SudentManagementConSole\obj\Debug\net8.0\SudentManagementConSole.csproj.CoreCompileInputs.cache
+D:\StudentManagement\SudentManagementConSole\obj\Debug\net8.0\SudentManagementConSole.dll
+D:\StudentManagement\SudentManagementConSole\obj\Debug\net8.0\refint\SudentManagementConSole.dll
+D:\StudentManagement\SudentManagementConSole\obj\Debug\net8.0\SudentManagementConSole.pdb
+D:\StudentManagement\SudentManagementConSole\obj\Debug\net8.0\SudentManagementConSole.genruntimeconfig.cache
+D:\StudentManagement\SudentManagementConSole\obj\Debug\net8.0\ref\SudentManagementConSole.dll
