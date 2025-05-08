@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SudentManagementConSole")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8c17f83f9ae54b16f87390c77ec7df91ca991b72")]
 [assembly: System.Reflection.AssemblyProductAttribute("SudentManagementConSole")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SudentManagementConSole")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

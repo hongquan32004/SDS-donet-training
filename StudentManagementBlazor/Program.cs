@@ -2,13 +2,13 @@ using Grpc.Net.Client;
 using ProtoBuf.Grpc.Client;
 using StudentManagementBlazor.Components;
 using StudentManagementBlazor.GrpcClient;
-using StudentManagementgRPC.Services.Interfaces;
+using Share.Interface;
 using AntDesign;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddSingleton<IStudentService>(provider =>
 {
-    var chanel = GrpcChannel.ForAddress(" http://localhost:5232");
+    var chanel = GrpcChannel.ForAddress("http://localhost:5232");
     return chanel.CreateGrpcService<IStudentService>();
 });
 builder.Services.AddSingleton<StudentGrpcClient>();
@@ -18,7 +18,9 @@ builder.Services.AddSingleton<StudentGrpcClient>();
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
 
+builder.Services.AddScoped<MessageService>();
 builder.Services.AddAntDesign();
+
 
 var app = builder.Build();
 

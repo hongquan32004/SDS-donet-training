@@ -35,4 +35,8 @@
     <PackageReference Include="protobuf-net.Grpc.ClientFactory" Version="1.2.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Shared\Shared.csproj" />
+  </ItemGroup>
+
 </Project>

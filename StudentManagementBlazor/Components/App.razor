@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="StudentManagementBlazor.styles.css" />
     <link href="_content/AntDesign/css/ant-design-blazor.css" rel="stylesheet" />
 
+
     <!-- HeadOutlet for Blazor -->
     <HeadOutlet />
 </head>
@@ -32,13 +33,11 @@
     <script src="_content/AntDesign/js/ant-design-blazor.js"></script>
     <script src="_content/AntDesign.Charts/ant-design-charts-blazor.js"></script>
     <script>
-        window.DownloadFile = (filename, contentType, base64Data) => {
+        window.DownloadFile = (fileName, contentType, base64Data) => {
             const link = document.createElement('a');
-            link.download = filename;
-            link.href = `data:${contentType};base64,${base64Data}`;
-            document.body.appendChild(link);
+            link.href = 'data:' + contentType + ';base64,' + base64Data;
+            link.download = fileName;
             link.click();
-            document.body.removeChild(link);
         };
     </script>
     <!-- Blazor Framework -->

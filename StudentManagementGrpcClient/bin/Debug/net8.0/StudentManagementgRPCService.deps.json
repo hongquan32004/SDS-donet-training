@@ -20,6 +20,7 @@
           "Microsoft.EntityFrameworkCore.SqlServer": "9.0.3",
           "Microsoft.EntityFrameworkCore.Tools": "9.0.3",
           "NHibernate": "5.5.2",
+          "Shared": "1.0.0",
           "protobuf-net": "3.2.46",
           "protobuf-net.Core": "3.2.46",
           "protobuf-net.Grpc": "1.2.2",
@@ -2074,6 +2075,18 @@
           "System.Threading": "4.3.0",
           "System.Xml.ReaderWriter": "4.3.0"
         }
+      },
+      "Shared/1.0.0": {
+        "dependencies": {
+          "protobuf-net": "3.2.46",
+          "protobuf-net.Core": "3.2.46",
+          "protobuf-net.Grpc": "1.2.2",
+          "protobuf-net.Grpc.AspNetCore": "1.2.2",
+          "protobuf-net.Grpc.ClientFactory": "1.2.2"
+        },
+        "runtime": {
+          "Shared.dll": {}
+        }
       }
     }
   },
@@ -3412,6 +3425,11 @@
       "sha512": "sha512-5zJ0XDxAIg8iy+t4aMnQAu0MqVbqyvfoUVl1yDV61xdo3Vth45oA2FoY4pPkxYAH5f8ixpmTqXeEIya95x0aCQ==",
       "path": "system.xml.xdocument/4.3.0",
       "hashPath": "system.xml.xdocument.4.3.0.nupkg.sha512"
+    },
+    "Shared/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
     }
   }
 }

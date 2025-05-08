@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StudentManagementBlazor", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StudentManagementGrpcClient", "StudentManagementGrpcClient\StudentManagementGrpcClient.csproj", "{6B48B389-DC10-4A33-A1D2-B4804F2F0606}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SudentManagementConSole", "SudentManagementConSole\SudentManagementConSole.csproj", "{01959B23-232E-4A65-BDA4-3EC11044C1C1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SudentManagementConSole", "SudentManagementConSole\SudentManagementConSole.csproj", "{01959B23-232E-4A65-BDA4-3EC11044C1C1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared", "Shared\Shared.csproj", "{403B3E39-DE9F-40FC-8046-46CB82D777AC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{01959B23-232E-4A65-BDA4-3EC11044C1C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{01959B23-232E-4A65-BDA4-3EC11044C1C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{01959B23-232E-4A65-BDA4-3EC11044C1C1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{403B3E39-DE9F-40FC-8046-46CB82D777AC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{403B3E39-DE9F-40FC-8046-46CB82D777AC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{403B3E39-DE9F-40FC-8046-46CB82D777AC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{403B3E39-DE9F-40FC-8046-46CB82D777AC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

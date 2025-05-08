@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "vy3zqMulM4o=",
+  "dgSpecHash": "5SXTOVVDXAU=",
   "success": true,
-  "projectFilePath": "D:\\StudentManagement\\StudentManagementGrpcClient\\StudentManagementGrpcClient.csproj",
+  "projectFilePath": "C:\\Users\\ACER\\github\\StudentManagement\\StudentManagementGrpcClient\\StudentManagementGrpcClient.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ACER\\.nuget\\packages\\antdesign\\1.3.2\\antdesign.1.3.2.nupkg.sha512",
     "C:\\Users\\ACER\\.nuget\\packages\\antdesign.charts\\0.6.1\\antdesign.charts.0.6.1.nupkg.sha512",

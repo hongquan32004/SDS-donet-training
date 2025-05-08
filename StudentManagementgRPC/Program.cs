@@ -2,7 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using ProtoBuf.Grpc.Server;
 using StudentManagementgRPC.Services;
 using StudentManagementgRPC.Services.Implementations;
-using StudentManagementgRPC.Services.Interfaces;
+using Share.Interface;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddCodeFirstGrpc();

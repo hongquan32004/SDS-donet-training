@@ -101,3 +101,5 @@ D:\StudentManagement\StudentManagementGrpcClient\bin\Debug\net8.0\EPPlus.System.
 D:\StudentManagement\StudentManagementGrpcClient\bin\Debug\net8.0\Microsoft.IO.RecyclableMemoryStream.dll
 D:\StudentManagement\StudentManagementGrpcClient\bin\Debug\net8.0\runtimes\win\lib\net7.0\Microsoft.Win32.SystemEvents.dll
 D:\StudentManagement\StudentManagementGrpcClient\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Drawing.Common.dll
+D:\StudentManagement\StudentManagementGrpcClient\bin\Debug\net8.0\Shared.dll
+D:\StudentManagement\StudentManagementGrpcClient\bin\Debug\net8.0\Shared.pdb

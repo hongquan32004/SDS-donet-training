@@ -2964,6 +2964,23 @@
           "lib/netstandard1.3/System.Xml.XDocument.dll": {}
         }
       },
+      "Shared/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "protobuf-net": "3.2.46",
+          "protobuf-net.Core": "3.2.46",
+          "protobuf-net.Grpc": "1.2.2",
+          "protobuf-net.Grpc.AspNetCore": "1.2.2",
+          "protobuf-net.Grpc.ClientFactory": "1.2.2"
+        },
+        "compile": {
+          "bin/placeholder/Shared.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Shared.dll": {}
+        }
+      },
       "StudentManagementgRPCService/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
@@ -2977,6 +2994,7 @@
           "Grpc.Net.Client": "2.70.0",
           "Microsoft.EntityFrameworkCore.SqlServer": "9.0.3",
           "NHibernate": "5.5.2",
+          "Shared": "1.0.0",
           "protobuf-net": "3.2.46",
           "protobuf-net.Core": "3.2.46",
           "protobuf-net.Grpc": "1.2.2",
@@ -9339,6 +9357,11 @@
         "system.xml.xdocument.nuspec"
       ]
     },
+    "Shared/1.0.0": {
+      "type": "project",
+      "path": "../Shared/Shared.csproj",
+      "msbuildProject": "../Shared/Shared.csproj"
+    },
     "StudentManagementgRPCService/1.0.0": {
       "type": "project",
       "path": "../StudentManagementgRPC/StudentManagementgRPCService.csproj",
@@ -9353,6 +9376,7 @@
       "Google.Protobuf >= 3.30.2",
       "Grpc.Net.Client >= 2.70.0",
       "Grpc.Tools >= 2.71.0",
+      "Shared >= 1.0.0",
       "StudentManagementgRPCService >= 1.0.0",
       "protobuf-net >= 3.2.46",
       "protobuf-net.Core >= 3.2.46",
@@ -9367,11 +9391,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\StudentManagement\\StudentManagementBlazor\\StudentManagementBlazor.csproj",
+      "projectUniqueName": "C:\\Users\\ACER\\github\\StudentManagement\\StudentManagementBlazor\\StudentManagementBlazor.csproj",
       "projectName": "StudentManagementBlazor",
-      "projectPath": "D:\\StudentManagement\\StudentManagementBlazor\\StudentManagementBlazor.csproj",
+      "projectPath": "C:\\Users\\ACER\\github\\StudentManagement\\StudentManagementBlazor\\StudentManagementBlazor.csproj",
       "packagesPath": "C:\\Users\\ACER\\.nuget\\packages\\",
-      "outputPath": "D:\\StudentManagement\\StudentManagementBlazor\\obj\\",
+      "outputPath": "C:\\Users\\ACER\\github\\StudentManagement\\StudentManagementBlazor\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\ACER\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -9389,8 +9413,11 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "D:\\StudentManagement\\StudentManagementgRPC\\StudentManagementgRPCService.csproj": {
-              "projectPath": "D:\\StudentManagement\\StudentManagementgRPC\\StudentManagementgRPCService.csproj"
+            "C:\\Users\\ACER\\github\\StudentManagement\\Shared\\Shared.csproj": {
+              "projectPath": "C:\\Users\\ACER\\github\\StudentManagement\\Shared\\Shared.csproj"
+            },
+            "C:\\Users\\ACER\\github\\StudentManagement\\StudentManagementgRPC\\StudentManagementgRPCService.csproj": {
+              "projectPath": "C:\\Users\\ACER\\github\\StudentManagement\\StudentManagementgRPC\\StudentManagementgRPCService.csproj"
             }
           }
         }

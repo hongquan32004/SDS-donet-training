@@ -1,10 +1,8 @@
 ﻿using Grpc.Net.Client;
 using ProtoBuf.Grpc.Client;
-using StudentManagementgRPC.Contracts.Requests;
-using StudentManagementgRPC.Contracts.Responses;
-using StudentManagementgRPC.Services.Interfaces;
-using StudentManagementgRPCService.Contracts.Requests;
-using StudentManagementgRPCService.Contracts.Responses;
+using Share.Interface;
+using DTOS.Requests;
+using DTOS.Responses;
 
 namespace StudentManagementBlazor.GrpcClient
 {

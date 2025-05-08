@@ -1,12 +1,10 @@
 ﻿@page "/student-detail/{id:int}"
 @using StudentManagementBlazor.GrpcClient
-@using StudentManagementgRPC.Contracts.Requests
-@using StudentManagementgRPC.Contracts.Responses
+@using DTOS.Requests;
+@using DTOS.Responses;
 @using AntDesign
-@inject StudentGrpcClient StudentGrpcClient
-@inject IJSRuntime JS
 @rendermode InteractiveServer
-@inject NavigationManager Navigation
+
 @if(student == null){
 	<p>Loading.......</p>
 }
@@ -28,12 +26,5 @@ else
 }
 
 @code {
-	[Parameter]
-	public int id { get; set; }
-	private StudentManagementgRPC.Contracts.Responses.Student student;
-	protected override async Task OnInitializedAsync()
-	{
-		var request = new StudentRequest { Id = id };
-		student = await StudentGrpcClient.GetStudentById(request);
-	}
+	
 }

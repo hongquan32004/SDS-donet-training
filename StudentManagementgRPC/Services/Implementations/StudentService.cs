@@ -7,12 +7,10 @@ using ProtoBuf.Grpc;
 using NHibernate;
 using StudentManagementgRPC.NhibernerHelper;
 using NHibernate.Linq;
-using StudentManagementgRPC.Services.Interfaces;
-using StudentManagementgRPC.Contracts.Responses;
-using StudentManagementgRPC.Contracts.Requests;
+using Share.Interface;
+using DTOS.Requests;
+using DTOS.Responses;
 using Microsoft.IdentityModel.Tokens;
-using StudentManagementgRPCService.Contracts.Requests;
-using StudentManagementgRPCService.Contracts.Responses;
 using OfficeOpenXml;
 
 namespace StudentManagementgRPC.Services.Implementations
@@ -40,7 +38,7 @@ namespace StudentManagementgRPC.Services.Implementations
                         Address = s.address,
                         Classroom = new ClassRoom { Id = s.classRoom?.id, Name = s.classRoom.name, 
                             Subject = s.classRoom.subject, 
-                            Teacher = new Contracts.Requests.Teacher { Id = s.classRoom.teacher.id, Name = s.classRoom.teacher.name, DateOfBirth = s.classRoom.teacher.dateOfBirth} },
+                            Teacher = new DTOS.Requests.Teacher { Id = s.classRoom.teacher.id, Name = s.classRoom.teacher.name, DateOfBirth = s.classRoom.teacher.dateOfBirth} },
                     }));
                     return await Task.FromResult(response);
                 }
@@ -132,7 +130,7 @@ namespace StudentManagementgRPC.Services.Implementations
                             Name = student.name,
                             Address = student.address,
                             DateOfBirth = student.dateOfBirth,
-                            Classroom = new ClassRoom { Id = student.classRoom?.id, Name = student.classRoom?.name, Subject = student.classRoom?.subject, Teacher = new Contracts.Requests.Teacher {Id = student.classRoom.teacher.id, Name = student.classRoom.teacher.name } }
+                            Classroom = new ClassRoom { Id = student.classRoom?.id, Name = student.classRoom?.name, Subject = student.classRoom?.subject, Teacher = new DTOS.Requests.Teacher {Id = student.classRoom.teacher.id, Name = student.classRoom.teacher.name } }
                         };
                         return await Task.FromResult(response);
                     }

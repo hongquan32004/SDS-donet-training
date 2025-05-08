@@ -1,28 +1,23 @@
 ﻿@page "/update-student/{id:int}"
-@using StudentManagementBlazor.GrpcClient
-@using StudentManagementgRPC.Contracts.Requests
-@using StudentManagementgRPC.Contracts.Responses
 @using AntDesign
-@inject StudentGrpcClient StudentGrpcClient
-@inject IJSRuntime JS
 @rendermode InteractiveServer
-@inject NavigationManager Navigation
+
 
 <h3>UpdateStudent</h3>
-@if(student == null)
+@if(Student == null)
 {
 	<p>Loading...</p>
 }
 else{
-	<Form Model="student" OnFinish="handleUpdate" OnFinishFailed="HandleFailed">
+	<Form Model="Student" OnFinish="HandleUpdate" OnFinishFailed="HandleFailed">
 		<FormItem Label="Name">
-			<Input @bind-Value = "student.Name"/>
+			<Input @bind-Value = "Student.Name"/>
 		</FormItem>
 		<FormItem Label="Date of birth">
-			<DatePicker @bind-Value="student.DateOfBirth" Format="dd/MM/yyyy"/>
+			<DatePicker @bind-Value="Student.DateOfBirth" Format="dd/MM/yyyy"/>
 		</FormItem>
 		<FormItem Label="Address">
-			<Input @bind-Value ="student.Address"/>
+			<Input @bind-Value ="Student.Address"/>
 		</FormItem>
 		<FormItem >
 			<Button Type="ButtonType.Primary" HtmlType="submit" >
@@ -33,38 +28,5 @@ else{
 }
 
 @code {
-	[Parameter]
-	public int id { get; set; }
-
-	private StudentManagementgRPC.Contracts.Responses.Student? student;
-	protected override async Task OnInitializedAsync()
-	{
-		var request = new StudentRequest { Id = id };
-		student = await StudentGrpcClient.GetStudentById(request);
-	}
-	async Task handleUpdate()
-	{
-		try
-		{
-			var request = new StudentUpdateRequest
-			{
-				Id = student.Id,
-				Name = student.Name,
-				Address = student.Address,
-				DateOfBirth = student.DateOfBirth
-			};
-			await StudentGrpcClient.UpdateStudent(request);
-			await JS.InvokeVoidAsync("alert", "Cập nhật thành công!");
-			Navigation.NavigateTo("/students");
-		}
-		catch(Exception ex)
-		{
-			await JS.InvokeVoidAsync("alert", $"Error: {ex.Message}");
-		}
-	}
-	void HandleFailed(EditContext context)
-	{
-		Console.WriteLine("Form không hợp lệ!");
-	}
-
+    
 }

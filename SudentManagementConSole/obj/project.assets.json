@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\StudentManagement\\SudentManagementConSole\\SudentManagementConSole.csproj",
+      "projectUniqueName": "C:\\Users\\ACER\\github\\StudentManagement\\SudentManagementConSole\\SudentManagementConSole.csproj",
       "projectName": "SudentManagementConSole",
-      "projectPath": "D:\\StudentManagement\\SudentManagementConSole\\SudentManagementConSole.csproj",
+      "projectPath": "C:\\Users\\ACER\\github\\StudentManagement\\SudentManagementConSole\\SudentManagementConSole.csproj",
       "packagesPath": "C:\\Users\\ACER\\.nuget\\packages\\",
-      "outputPath": "D:\\StudentManagement\\SudentManagementConSole\\obj\\",
+      "outputPath": "C:\\Users\\ACER\\github\\StudentManagement\\SudentManagementConSole\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\ACER\\AppData\\Roaming\\NuGet\\NuGet.Config",

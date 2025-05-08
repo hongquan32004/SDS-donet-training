@@ -187,3 +187,5 @@ D:\StudentManagement\StudentManagementgRPC\bin\Debug\net8.0\Microsoft.IO.Recycla
 D:\StudentManagement\StudentManagementgRPC\bin\Debug\net8.0\EPPlus.System.Drawing.dll
 D:\StudentManagement\StudentManagementgRPC\bin\Debug\net8.0\runtimes\win\lib\net7.0\Microsoft.Win32.SystemEvents.dll
 D:\StudentManagement\StudentManagementgRPC\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Drawing.Common.dll
+D:\StudentManagement\StudentManagementgRPC\bin\Debug\net8.0\Shared.dll
+D:\StudentManagement\StudentManagementgRPC\bin\Debug\net8.0\Shared.pdb

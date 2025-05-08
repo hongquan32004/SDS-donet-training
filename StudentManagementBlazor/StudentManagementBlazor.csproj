@@ -24,6 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Shared\Shared.csproj" />
     <ProjectReference Include="..\StudentManagementgRPC\StudentManagementgRPCService.csproj" />
   </ItemGroup>
 

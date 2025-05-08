@@ -2,8 +2,8 @@
 using System.Threading.Tasks;
 using Grpc.Net.Client;
 using ProtoBuf.Grpc.Client;
-using StudentManagementgRPC.Contracts.Requests;
-using StudentManagementgRPC.Services.Interfaces;
+using DTOS.Requests;
+using Share.Interface;
 namespace StudentManagementGrpcClient;
 class Program
 {
@@ -13,7 +13,7 @@ class Program
 
         var studentService = channel.CreateGrpcService<IStudentService>();
 
-        var response = await studentService.GetAllStudents(new StudentManagementgRPC.Contracts.Requests.Empty());
+        var response = await studentService.GetAllStudents(new DTOS.Requests.Empty());
 
         Console.WriteLine("Danh sách sinh viên:");
         foreach (var student in response.Students)
@@ -21,7 +21,7 @@ class Program
             Console.WriteLine($"ID: {student.Id}, Tên: {student.Name}, Ngày sinh: {student.DateOfBirth}, Địa chỉ: {student.Address}, Lớp: {student.Classroom?.Id}");
         }
         Console.WriteLine("Sắp xếp sinh viên theo tên:");
-        var sorted = await studentService.SortStudentByName(new StudentManagementgRPC.Contracts.Requests.Empty());
+        var sorted = await studentService.SortStudentByName(new DTOS.Requests.Empty());
         foreach(var student in sorted.Students)
         {
             Console.WriteLine($"ID: {student.Id}, Tên: {student.Name}, Ngày sinh: {student.DateOfBirth}, Địa chỉ: {student.Address}, Lớp: {student.Classroom?.Id}");
